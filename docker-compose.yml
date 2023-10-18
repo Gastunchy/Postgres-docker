@@ -8,10 +8,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
-    # Agrega una sección para copiar el archivo SQL al contenedor
-    command: ["postgres"]
     volumes:
+      - postgres_data:/var/lib/postgresql/data
       - ./table.sql:/docker-entrypoint-initdb.d/table.sql
-      - data:/var/lib/postgresql/Data
-  volumes:
-    data
+
+volumes:
+  postgres_data:
