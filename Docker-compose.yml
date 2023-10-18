@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    # Agrega una sección para copiar el archivo SQL al contenedor
+    command: ["postgres"]
+    volumes:
+      - ./table.sql:/docker-entrypoint-initdb.d/table.sql
