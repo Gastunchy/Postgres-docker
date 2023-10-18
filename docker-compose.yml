@@ -12,3 +12,4 @@ services:
     command: ["postgres"]
     volumes:
       - ./table.sql:/docker-entrypoint-initdb.d/table.sql
+      - ./data:/var/lib/postgresql/Data
